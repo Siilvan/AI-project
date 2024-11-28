@@ -1,6 +1,7 @@
+import sys
+import json
 from langchain_ollama import OllamaLLM
 from langchain_core.prompts import ChatPromptTemplate
-
 
 template = """
 Given a list of ingredients, provide multiple dishes and recipes using some or all those ingredients.
@@ -52,16 +53,12 @@ model = OllamaLLM(model="llama3")
 prompt = ChatPromptTemplate.from_template(template)
 chain = prompt | model
 
-def handle_conversation():
-    context = ""
-    print("Welcome to the AI Chatbot. Type 'exit' to quit.")
-    while True:
-        user_input = input("You: ")
-        if user_input.lower() == "exit":
-            break
-        result = chain.invoke({"context": context, "question": user_input}) 
-        print("Bot: ", result)
-
+def generate_recipes(ingredients):
+    question = ', '.join(ingredients)
+    result = chain.invoke({"question": question})
+    return result
 
 if __name__ == "__main__":
-    handle_conversation()
+    ingredients = sys.argv[1].split(',')
+    recipes = generate_recipes(ingredients)
+    print(recipes)
