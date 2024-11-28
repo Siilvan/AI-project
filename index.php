@@ -2,12 +2,15 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ingredients = $_POST['ingredients'];
 
+    error_log("Command: python3 main.py " . escapeshellarg($ingredients));
+
     $command = escapeshellcmd("python3 main.py " . escapeshellarg($ingredients));
     $output = shell_exec($command);
 
+    error_log("Output: " . $output);
+
     header('Content-Type: application/json');
     echo $output;
-    echo '<script>alert("Welcome to Geeks for Geeks")</script>';
 }
 ?> 
 

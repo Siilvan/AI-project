@@ -2,7 +2,7 @@ document.getElementById('add-ingredient').addEventListener('click', function() {
     const ingredientInput = document.getElementById('ingredient-input').value;
     const ingredients = ingredientInput.split(',').map(ingredient => ingredient.trim());
 
-    fetch('generate_recipes.php', {
+    fetch('index.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -11,6 +11,9 @@ document.getElementById('add-ingredient').addEventListener('click', function() {
     })
     .then(response => response.json())
     .then(data => {
+
+        console.log(data);
+
         const recipeContainer = document.getElementById('recipe-container');
         recipeContainer.innerHTML = '';
 

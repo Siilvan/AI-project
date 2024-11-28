@@ -78,7 +78,7 @@ button:hover {
     gap: 20px;
 }
 
-.recipe-card {
+.recipe-container {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 8px;

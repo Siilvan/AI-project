@@ -61,4 +61,4 @@ def generate_recipes(ingredients):
 if __name__ == "__main__":
     ingredients = sys.argv[1].split(',')
     recipes = generate_recipes(ingredients)
-    print(recipes)
+    print(json.dumps(recipes))
