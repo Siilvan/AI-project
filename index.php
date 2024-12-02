@@ -1,19 +1,15 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ingredients = $_POST['ingredients'];
-
-    error_log("Command: python3 main.py " . escapeshellarg($ingredients));
-
+    
     $command = escapeshellcmd("python3 main.py " . escapeshellarg($ingredients));
     $output = shell_exec($command);
-
-    error_log("Output: " . $output);
-
+    
     header('Content-Type: application/json');
     echo $output;
+    exit;
 }
-?> 
-
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <section class="input-section">
             <h2>Enter Your Ingredients</h2>
             <form id="ingredient-form" method="post">
-                <input type="text" id="ingredient-input" placeholder="Type your ingredients... (comma separated)" autocomplete="off">
+                <input type="text" id="ingredients" name="ingredients" placeholder="Type your ingredients... (comma separated)">
                 <button type="button" id="add-ingredient">Generate</button>
             </form>
             <div id="ingredient-list"></div>
