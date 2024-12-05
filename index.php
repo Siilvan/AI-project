@@ -2,9 +2,6 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ingredients = $_POST['ingredients'];
     
-    $command = escapeshellcmd("python3 main.py " . escapeshellarg($ingredients));
-    $output = shell_exec($command);
-    
     header('Content-Type: application/json');
     echo $output;
     exit;
@@ -34,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <section class="recipe-section">
             <h2>Generated Recipes</h2>
+            tomato, tomato sauce, spaghetti, cucumber, mushrooms, fentanyl, bread, cabbage 
             <div id="recipe-container"></div>
         </section>
     </main>
