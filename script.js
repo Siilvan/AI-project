@@ -29,9 +29,9 @@ document.getElementById('add-ingredient').addEventListener('click', function() {
     4. The instructions of the dish should ALWAYS be called "Instructions" should be in the "Recipe" object.
     5. The ingredients should be in an array.
     6. The output should only include the ingredients, recipe, instructions and dish name.
-    7. When listing multiple dishes, each dish should be a separate object.
-    8. Respond only with valid JSON. Do not write an introduction or summary.
-    9. The Ingredients should not contain a space.
+    7. Respond only with valid JSON. Do not write an introduction or summary.
+    8. The Ingredients should not contain a space.
+    9. Only name one dish.
 
     1. Create a object in which the first key of an array is the dish called "Dish_Name".
     2. Create another array in the object called "Recipe".
@@ -87,7 +87,7 @@ document.getElementById('add-ingredient').addEventListener('click', function() {
             card.innerHTML = `
                 <h3>${parsedData.Dish_Name}</h3>
                 <p>Ingredients: ${parsedData.Recipe.Ingredients.join(', ')}</p>
-                <p>Instructions: ${parsedData.Recipe.Instructions ? parsedData.Recipe.Instructions.join(' ') : 'Data not available'}</p>`;
+                <p>Instructions: ${parsedData.Recipe.Instructions }</p>`;
         recipeContainer.appendChild(card);
     })
     .catch(error => console.error('Error:', error));
