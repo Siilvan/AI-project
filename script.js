@@ -32,6 +32,7 @@ document.getElementById('add-ingredient').addEventListener('click', function() {
     7. Respond only with valid JSON. Do not write an introduction or summary.
     8. The Ingredients should not contain a space.
     9. Only name one dish.
+    10. The ingredients should be a maximum of 4 words.
 
     1. Create a object in which the first key of an array is the dish called "Dish_Name".
     2. Create another array in the object called "Recipe".
@@ -89,6 +90,10 @@ document.getElementById('add-ingredient').addEventListener('click', function() {
                 <p>Ingredients: ${parsedData.Recipe.Ingredients.join(', ')}</p>
                 <p>Instructions: ${parsedData.Recipe.Instructions }</p>`;
         recipeContainer.appendChild(card);
+
+        document.getElementById('dish_name').value = parsedData.Dish_Name;
+        document.getElementById('recipe_ingredients').value = parsedData.Recipe.Ingredients;
+        document.getElementById('recipe_instructions').value = parsedData.Recipe.Instructions.join('. ');
     })
     .catch(error => console.error('Error:', error));
 });
