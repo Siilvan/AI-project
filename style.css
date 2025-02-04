@@ -1,3 +1,4 @@
+
 :root {
     --bg-color: #121212;
     --text-color: #e0e0e0;
@@ -10,6 +11,7 @@
     --card-bg: #1e1e1e;
     --card-border: #333;
     --card-shadow: rgba(0, 0, 0, 0.2);
+    --selected-bg: #444;
 }
 
 body {
@@ -33,17 +35,45 @@ main {
 
 form {
     display: flex;
+    flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-#ingredients {
-    flex: 1;
+.ingredient-category {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: var(--card-bg);
     color: var(--text-color);
+    height: 150px;
+    overflow-y: scroll;
+}
+
+select::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+select {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+option {
+    padding: 10px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+option:checked {
+    background-color: var(--selected-bg);
 }
 
 button {
